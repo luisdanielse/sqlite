@@ -1,0 +1,16 @@
+{% extends "basetienda.html" %}
+{% load staticfiles %}
+{% block pageTitle %}Pago exitoso{% endblock %}
+{% block references %}
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css'%}" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="{% static 'plugins/themify-icons/themify-icons.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/single_styles.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/order_responsive.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base.css'%}">
+{% endblock %}
+
+{% block contenidoPrincipal %}
+    <h1 title="Gracias por la compra">Gracias por tu compra</h1>
+    <p class="orderinfo">Tu pago ha sido procesado exitosamente. Rastrearlo con el número: <strong>{{ order.id }}</strong>.</p>
+{% endblock %}

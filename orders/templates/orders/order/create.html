@@ -1,0 +1,35 @@
+{% extends "basetienda.html" %}
+{% load staticfiles %}
+
+{% block pageTitle %}Datos de pago{% endblock %}
+{% block references %}
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css'%}" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="{% static 'plugins/themify-icons/themify-icons.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/single_styles.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/order_responsive.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base.css'%}">
+{% endblock %}
+{% block contenidoPrincipal %}
+
+    <h1>Checkout</h1>
+
+    <div class="order-info">
+        <h3>Tu orden</h3>
+        <ul>
+            {% for item in cart %}
+                <li>{{ item.quantity }}x {{ item.product.name }} <span>${{ item.total_price }}</span></li>
+            {% endfor %}
+        </ul>
+        <p>Total: ${{ cart.get_total_price }}</p>
+    </div>
+
+    <form action="." method="post" class="order-form">
+        {{ form.as_p }}
+        <p><input type="submit" value="Procesar pago"></p>
+        {% csrf_token %}
+    </form>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
